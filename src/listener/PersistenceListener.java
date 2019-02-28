@@ -44,8 +44,6 @@ public class PersistenceListener implements ServletContextListener, HttpSessionL
 	EntityManager em;
     public void sessionCreated(HttpSessionEvent se)  { 
          // TODO Auto-generated method stub
-    	EntityManagerFactory emf = Persistence.createEntityManagerFactory("GestionCommandes");
-		em = emf.createEntityManager();
 		se.getSession().setAttribute("entitymanager", em);
 		System.out.println("em enregistré");
     }

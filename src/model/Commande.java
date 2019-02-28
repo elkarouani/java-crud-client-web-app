@@ -9,42 +9,52 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Table(name="commande")
 @NamedQuery(name="Commande.findAll", query="SELECT c FROM Commande c")
 public class Commande implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
+	@Column(nullable=false, length=10)
 	private String dateCmd;
 
-	private String idClient;
+	@Column(nullable=false)
+	private int nbc;
 	
 	@Id
-	private int nbc;
+	@Column(nullable=false)
+	private String idClient;
+
+	//bi-directional many-to-one association to Client
+	@ManyToOne
+	@JoinColumn(name="idClient", referencedColumnName="idCl", nullable=false)
+	private Client client;
 
 	public Commande() {
 	}
 
 	public String getDateCmd() {
-		return this.dateCmd;
+		return dateCmd;
 	}
 
 	public void setDateCmd(String dateCmd) {
 		this.dateCmd = dateCmd;
 	}
 
-	public String getIdClient() {
-		return this.idClient;
-	}
-
-	public void setIdClient(String idClient) {
-		this.idClient = idClient;
-	}
-
 	public int getNbc() {
-		return this.nbc;
+		return nbc;
 	}
 
 	public void setNbc(int nbc) {
 		this.nbc = nbc;
 	}
+
+	public String getIdClient() {
+		return idClient;
+	}
+
+	public void setIdClient(String idClient) {
+		this.idClient = idClient;
+	}
+	
 
 }

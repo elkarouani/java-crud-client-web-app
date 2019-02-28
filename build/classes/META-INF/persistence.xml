@@ -4,5 +4,6 @@
 		<non-jta-data-source>java:comp/env/jdbc/WebApp</non-jta-data-source>
 		<class>model.Client</class>
 		<class>model.Commande</class>
+		<class>model.Compte</class>
 	</persistence-unit>
 </persistence>
